@@ -5,8 +5,6 @@ import React, { useState } from "react";
 const Contact = () => {
   const [form, setForm] = useState({
     name: "",
-    email: "",
-    subject: "",
     message: "",
   });
 
@@ -17,8 +15,8 @@ const Contact = () => {
   };
 
   const validateForm = () => {
-    const { name, email, subject, message } = form;
-    if (!name || !email || !subject || !message) {
+    const { name, message } = form;
+    if (!name ||  !message) {
       alert("Please fill in all fields");
       return false;
     }
@@ -28,14 +26,12 @@ const Contact = () => {
   const sendWhatsApp = () => {
     if (!validateForm()) return;
 
-    const { name, email, subject, message } = form;
+    const { name, message } = form;
 
     const phoneNumber = "27719477676"; // WhatsApp number (no +)
 
     const whatsappMessage = `
 Name: ${name}
-Email: ${email}
-Subject: ${subject}
 
 Message:
 ${message}
@@ -48,37 +44,7 @@ ${message}
     window.open(url, "_blank");
   };
 
-  const sendEmail = async () => {
-  const { name, email, subject, message } = form;
-
-  if (!name || !email || !subject || !message) {
-    alert("Please fill in all fields");
-    return;
-  }
-
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, subject, message }),
-    });
-
-    if (!res.ok) throw new Error();
-
-    alert("Message sent successfully!");
-    setForm({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-  } catch {
-    alert("Failed to send message. Please try again.");
-  }
-};
-
+  
 
   return (
     <div className="pt-16 pb-16 bg-gray-200">
@@ -98,28 +64,11 @@ ${message}
             className="border-2 mt-6 border-gray-600 w-full px-6 py-3 rounded-full mb-6 placeholder:text-white text-white bg-transparent"
           />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email*"
-            value={form.email}
-            onChange={handleChange}
-            className="border-2 border-gray-600 w-full px-6 py-3 rounded-full mb-6 placeholder:text-white text-white bg-transparent"
-          />
-
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject*"
-            value={form.subject}
-            onChange={handleChange}
-            className="border-2 border-gray-600 w-full px-6 py-3 rounded-full mb-6 placeholder:text-white text-white bg-transparent"
-          />
 
           <textarea
             name="message"
             rows={5}
-            placeholder="Comments*"
+            placeholder="Enquiry*"
             value={form.message}
             onChange={handleChange}
             className="border-2 border-gray-600 w-full px-6 py-3 rounded-3xl mb-6 placeholder:text-white text-white bg-transparent"

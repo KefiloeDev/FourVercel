@@ -3,6 +3,7 @@ import React from "react";
 import ServiceCard from "./ServiceCard";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/app/components/ui/card";
 import { Button } from "@/app/components/ui/button";
+import Link from "next/link";
 
 
 
@@ -119,7 +120,9 @@ const Services = () => {
               </CardContent>
 
               <CardFooter>
+                <Link href="/Contact">
                 <Button className="w-full">Get Started</Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}

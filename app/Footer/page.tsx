@@ -48,7 +48,7 @@ const Footer = () => {
             <div className="flex items-center space-x-5">
               <FaPaperPlane className="w-5 h-5 text-white" />
               <p className="font-medium text-sm text-white">
-                Midrand <br /> Johnnesburg{" "}
+                Randburg <br /> Johnnesburg{" "}
               </p>
             </div>
             {/* Phone */}
@@ -67,7 +67,7 @@ const Footer = () => {
             <div className="flex items-center space-x-5">
               <IoMailOpen className="w-5 h-5 text-white" />
               <p className="font-medium text-sm text-white">
-                info@4-four.co.za
+                nthutekashe@4-four.co.za
               </p>
             </div>
           </div>
